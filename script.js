@@ -89,7 +89,7 @@ function announceWinner() {
   if (humanScore === 5) {
     console.log("YESSUH BLESSUH YOU BEAT THAT BITCH!")
   } else if (computerScore === 5) {
-    console.log("The computer mauled you!")
+    console.log("BROOOO THE COMPUTER MAULED YOU!")
   }
 }
 });
