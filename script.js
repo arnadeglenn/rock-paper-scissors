@@ -1,4 +1,6 @@
 console.log("hello,world!");
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let compChoice = Math.floor(Math.random()*3)
@@ -21,47 +23,47 @@ const scissorsButton = document.getElementById("scissorsButton");
 
 rockButton.addEventListener("click", function() {
     humanChoice = "Rock";
-    compareChoice();
+    game();
 });
 paperButton.addEventListener("click", function() {
     humanChoice = "Paper";
-    compareChoice();
+    game();
 });
 scissorsButton.addEventListener("click", function() {
     humanChoice = "Scissors";
-    compareChoice();
+    game();
 });
 
-function compareChoice(){
+function playRound(){
     let compChoice = getComputerChoice();  
 switch (compChoice) {
     case "Rock":
       if (humanChoice === "Rock") {
-        console.log("It's a Tie!");
+        return "It's a Tie!";
       } else if (humanChoice === "Paper") {
-        console.log("You Lose!");
+        return "You Lose!";
       } else if (humanChoice === "Scissors") {
-        console.log("You Win!");
+        return "You Win!";
       }
       break;
   
     case "Paper":
       if (humanChoice === "Rock") {
-        console.log("You Win!");
+        return "You Win!";
       } else if (humanChoice === "Paper") {
-        console.log("It's a Tie!");
+        return "It's a Tie!";
       } else if (humanChoice === "Scissors") {
-        console.log("You Lose!");
+        return "You Lose!";
       }
       break;
   
     case "Scissors":
       if (humanChoice === "Rock") {
-        console.log("You Lose!");
+        return "You Lose!";
       } else if (humanChoice === "Paper") {
-        console.log("You Win!");
+        return "You Win!";
       } else if (humanChoice === "Scissors") {
-        console.log("It's a Tie!");
+        return "It's a Tie!";
       }
       break;
   
@@ -69,7 +71,29 @@ switch (compChoice) {
       console.log("Invalid choice.");
   }
 }  
+function game() {
+  let result = playRound();
+  if (result === "You Win!") {
+    humanScore++;
+  } else if (result === "You Lose!") {
+    computerScore++;
+  } else if (result === "It's a Tie!") {
+  } 
+
+  console.log(result);
+  console.log(humanScore + "-" + computerScore);
+  announceWinner();
+}
+
+function announceWinner() {
+  if (humanScore === 5) {
+    console.log("YESSUH BLESSUH YOU BEAT THAT BITCH!")
+  } else if (computerScore === 5) {
+    console.log("The computer mauled you!")
+  }
+}
 });
+
 
 
 

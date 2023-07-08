@@ -24,3 +24,24 @@ if computer = rock, You Lose!
 else if computer = paper, You Win!
 else computer = scissors, It's a Tie!
 
+game()
+if playRound = "You Win!"
+return ++1 to human
+else if playRound = "You Lose!"
+return ++1 to computer
+else playRound = "It's a Tie!"
++0
+
+
+
+let humanScore = 0;
+for (let i=0; i<6; i++) {
+    console.log(i)
+}
+
+let computerScore = 0;
+for (let i=0; i<6; i++) {
+    console.log(i)
+}
+
+keep score of human
