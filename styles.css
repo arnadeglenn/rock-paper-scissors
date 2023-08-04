@@ -1,4 +1,35 @@
-div {
+h1 {
     display: flex;
-    gap: 5px;
+    justify-content: center;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonSelectors {
+    background-color: pink;
+    padding: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.restartButton {
+    display: flex;
+    justify-content: center;
+    background-color: magenta;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 50px
+}
+
+button {
+    background-color: rgb(214, 179, 209);
+    font-size: 20px;
+    border-radius: 8px;
+    border: 2px solid white;
 }

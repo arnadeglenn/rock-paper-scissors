@@ -1,6 +1,14 @@
+document.addEventListener('DOMContentLoaded', function() {
+
 console.log("hello,world!");
 let humanScore = 0;
 let computerScore = 0;
+
+const rockButton = document.querySelector('#rockButton');
+const paperButton = document.querySelector('#paperButton');
+const scissorsButton = document.querySelector('#scissorsButton');
+const startOver = document.querySelector('#startOver');
+const textDisplay = document.querySelector('#textDisplay');
 
 function getComputerChoice() {
     let compChoice = Math.floor(Math.random()*3)
@@ -12,91 +20,114 @@ function getComputerChoice() {
     } else if (compChoice === 2) {
         return "scissors";
     }
-    }  
+    };  
 
-function getHumanChoice() {
-  const humanType = prompt('Type Rock, Paper, or Scissors',);
-  const lowercaseType = humanType.toLowerCase();
 
-  if (lowercaseType !== "rock" && lowercaseType !== "paper" && lowercaseType !== "scissors") {
-      console.log("You suck at typing");
-  } else {
-      return lowercaseType;
-  }
-}
+rockButton.addEventListener('click', function() {
+  playRound('rock');
+  });
+  
+paperButton.addEventListener('click', function() {
+  playRound('paper');
+ });
+  
+scissorsButton.addEventListener('click', function() {
+    playRound('scissors');
+   });
 
-function playRound(){
+startOver.addEventListener('click', function() {
+  humanScore = 0;
+  computerScore = 0;
+  winnerText.textContent = "New Game Started!";
+  scoreText.textContent = "0-0";
+  resultText.textContent = "Let's Try That Again!"
+})
+
+const resultText = document.createElement('div');
+  resultText.classList.add('resultText');
+  textDisplay.appendChild(resultText);
+  resultText.style.cssText = "display: flex; justify-content: center; background-color: purple; margin-left: 200px; margin-right: 200px; color: white;";
+const scoreText = document.createElement('div');
+  scoreText.classList.add('scoreText');
+  textDisplay.appendChild(scoreText);
+  scoreText.style.cssText = "display: flex; justify-content: center; background-color: purple; margin-left: 200px; margin-right: 200px; color: white;";
+
+const winnerText = document.createElement('div');
+  winnerText.classList.add('winnerText');
+  textDisplay.appendChild(winnerText);
+  winnerText.style.cssText = "display: flex; justify-content: center; background-color: purple; margin-left: 200px; margin-right: 200px; color: white;";
+function playRound(humanChoice){
     let compChoice = getComputerChoice(); 
-    let humanChoice =  getHumanChoice();
+    let result;
 switch (compChoice) {
     case "rock":
       if (humanChoice === "rock") {
-        return "It's a Tie!";
+        result = "It's a Tie!";
       } else if (humanChoice === "paper") {
-        return "You Lose!";
+        result = "You Lose!";
       } else if (humanChoice === "scissors") {
-        return "You Win!";
+        result = "You Win!";
       }
       break;
   
     case "paper":
       if (humanChoice === "rock") {
-        return "You Win!";
+        result = "You Win!";
       } else if (humanChoice === "paper") {
-        return "It's a Tie!";
+        result = "It's a Tie!";
       } else if (humanChoice === "scissors") {
-        return "You Lose!";
+        result = "You Lose!";
       }
       break;
   
     case "scissors":
       if (humanChoice === "rock") {
-        return "You Lose!";
+        result = "You Lose!";
       } else if (humanChoice === "paper") {
-        return "You Win!";
+        result = "You Win!";
       } else if (humanChoice === "scissors") {
-        return "It's a Tie!";
+        result = "It's a Tie!";
       }
       break;
   
     default:
       console.log("Invalid choice.");
   }
+  resultText.textContent = result;
+  scoreboard(result);
+  scoreText.textContent = (humanScore + "-" + computerScore);
+  announceWinnerRestart();
 }  
 
-function game() {
-  for (let i=0; i<6; i++) {
-    let result = playRound();
+function scoreboard(result) {
     if (result === "You Win!") {
       humanScore++;
     } else if (result === "You Lose!") {
       computerScore++;
-    } else if (result === "It's a Tie!") {
-    } 
-  
-    console.log(result);
-    console.log(humanScore + "-" + computerScore);
-    announceWinner();
-  }
+    };
+  };
 
-}
-
-function announceWinner() {
+function announceWinnerRestart() {
   if (humanScore === 5) {
-    console.log("YESSUH BLESSUH YOU BEAT THAT BITCH!")
+    winnerText.textContent = "YESSUH BLESSUH YOU BEAT THAT BITCH!";
     humanScore = 0;
     computerScore = 0;
   } else if (computerScore === 5) {
-    console.log("BROOOO THE COMPUTER MAULED YOU!")
+    winnerText.textContent = "BROOOO THE COMPUTER MAULED YOU!";
     humanScore = 0;
     computerScore = 0;
   }
 };
 
-game();
 
 
 
+
+
+
+
+
+});
 
 
 
