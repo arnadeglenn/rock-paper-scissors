@@ -8,6 +8,7 @@ const rockButton = document.querySelector('#rockButton');
 const paperButton = document.querySelector('#paperButton');
 const scissorsButton = document.querySelector('#scissorsButton');
 const startOver = document.querySelector('#startOver');
+const textDisplay = document.querySelector('#textDisplay');
 
 function getComputerChoice() {
     let compChoice = Math.floor(Math.random()*3)
@@ -33,6 +34,24 @@ paperButton.addEventListener('click', function() {
 scissorsButton.addEventListener('click', function() {
     playRound('scissors');
    });
+
+startOver.addEventListener('click', function() {
+  humanScore = 0;
+  computerScore = 0;
+  winnerText.textContent = "New Game Started!";
+})
+
+const resultText = document.createElement('div');
+  resultText.classList.add('resultText');
+  textDisplay.appendChild(resultText);
+
+const scoreText = document.createElement('div');
+  scoreText.classList.add('scoreText');
+  textDisplay.appendChild(scoreText);
+
+const winnerText = document.createElement('div');
+  winnerText.classList.add('winnerText');
+  textDisplay.appendChild(winnerText);
 
 function playRound(humanChoice){
     let compChoice = getComputerChoice(); 
@@ -71,9 +90,9 @@ switch (compChoice) {
     default:
       console.log("Invalid choice.");
   }
-  console.log(result);
+  resultText.textContent = result;
   scoreboard(result);
-  console.log(humanScore + "-" + computerScore);
+  scoreText.textContent = (humanScore + "-" + computerScore);
   announceWinnerRestart();
 }  
 
@@ -87,11 +106,11 @@ function scoreboard(result) {
 
 function announceWinnerRestart() {
   if (humanScore === 5) {
-    console.log("YESSUH BLESSUH YOU BEAT THAT BITCH!")
+    winnerText.textContent = "YESSUH BLESSUH YOU BEAT THAT BITCH!";
     humanScore = 0;
     computerScore = 0;
   } else if (computerScore === 5) {
-    console.log("BROOOO THE COMPUTER MAULED YOU!")
+    winnerText.textContent = "BROOOO THE COMPUTER MAULED YOU!";
     humanScore = 0;
     computerScore = 0;
   }
