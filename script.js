@@ -39,20 +39,23 @@ startOver.addEventListener('click', function() {
   humanScore = 0;
   computerScore = 0;
   winnerText.textContent = "New Game Started!";
+  scoreText.textContent = "0-0";
+  resultText.textContent = "Let's Try That Again!"
 })
 
 const resultText = document.createElement('div');
   resultText.classList.add('resultText');
   textDisplay.appendChild(resultText);
-
+  resultText.style.cssText = "display: flex; justify-content: center; background-color: purple; margin-left: 200px; margin-right: 200px; color: white;";
 const scoreText = document.createElement('div');
   scoreText.classList.add('scoreText');
   textDisplay.appendChild(scoreText);
+  scoreText.style.cssText = "display: flex; justify-content: center; background-color: purple; margin-left: 200px; margin-right: 200px; color: white;";
 
 const winnerText = document.createElement('div');
   winnerText.classList.add('winnerText');
   textDisplay.appendChild(winnerText);
-
+  winnerText.style.cssText = "display: flex; justify-content: center; background-color: purple; margin-left: 200px; margin-right: 200px; color: white;";
 function playRound(humanChoice){
     let compChoice = getComputerChoice(); 
     let result;
