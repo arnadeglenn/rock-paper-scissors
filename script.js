@@ -16,8 +16,14 @@ function getComputerChoice() {
 
 function getHumanChoice() {
   const humanType = prompt('Type Rock, Paper, or Scissors',);
-  return humanType.toLowerCase();
-};
+  const lowercaseType = humanType.toLowerCase();
+
+  if (lowercaseType !== "rock" && lowercaseType !== "paper" && lowercaseType !== "scissors") {
+      console.log("You suck at typing");
+  } else {
+      return lowercaseType;
+  }
+}
 
 function playRound(){
     let compChoice = getComputerChoice(); 
